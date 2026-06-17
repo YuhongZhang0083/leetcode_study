@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode Premium Extension",
+  "version": "2.0.2",
+  "description": "LeetCode Premium 会员插件",
+  "permissions": [
+    "cookies",
+    "activeTab",
+    "scripting",
+    "storage",
+    "webRequest",
+    "tabs",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://*.leetcode.com/*"
+  ],
+  "background": {
+    "service_worker": "serviceWorker.min.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/?promotionCode=*"],
+      "js": ["premiumLoginIndex.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon/icon128.png",
+    "32": "icon/icon128.png",
+    "48": "icon/icon128.png",
+    "128": "icon/icon128.png"
+  }
+}

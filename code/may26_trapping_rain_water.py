@@ -1,0 +1,33 @@
+
+'''
+You are given an array of non-negative integers height which represent an elevation map. Each value height[i] represents the height of a bar, which has a width of 1.
+
+Return the maximum area of water that can be trapped between the bars.
+
+Example 1:
+Input: height = [0,2,0,3,1,0,1,3,2,1]
+
+Output: 9
+'''
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        left = 0
+        right = len(height) - 1
+
+        left_max = 0
+        right_max = 0
+
+        water = 0
+
+        while left < right:
+            if height[left] < height[right]:
+                left_max = max(left_max, height[left])
+                water += left_max - height[left]
+                left += 1
+            
+            else:
+                right_max = max(right_max, height[right])
+                water += right_max - height[right]
+                right += 1
+
+            return water
